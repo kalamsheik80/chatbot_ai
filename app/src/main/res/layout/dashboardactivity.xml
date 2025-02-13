@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboard_background"
+    android:gravity="center"
+    android:orientation="vertical"
+
+    android:padding="16dp">
+
+
+    <!-- Dashboard Title -->
+    <TextView
+        android:id="@+id/tvDashboardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Welcome to Dashboard!"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <!-- Sample Dashboard Button 1 -->
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="View Profile" />
+
+    <!-- Sample Dashboard Button 2 -->
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Settings" />
+
+    <!-- Sample Logout Button -->
+
+</LinearLayout>
