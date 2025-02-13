@@ -9,4 +9,14 @@
     <string name="languages">Languages: </string>
     <string name="have_aid">Is aadhar id available: </string>
     <string name="create_account">Create Account</string>
+    <string name="telugu">Telugu</string>
+    <string name="hindi">Hindi</string>
+    <string name="English">English</string>
+    <string name="aadhar_card">Do you have aadhar Card</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+
 </resources>

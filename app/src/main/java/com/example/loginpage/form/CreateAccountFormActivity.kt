@@ -18,6 +18,11 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityCreateaccountFormBinding
     private val sharedPrefsName = "user_prefs"
+    private val savedData = "Data saved successfully!"
+    private val telugu = "Telugu"
+    private val hindi = "Hindi"
+    private val english = "English"
+    private val successfully = "Account Created Successfully"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +40,9 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun validateInputs(
         name: String, surname: String, fatherName: String,
-        dob: String, gender: String
+        dob: String, gender: String, aadharStatus: String
     ): Boolean {
-        if (name.isEmpty() || surname.isEmpty() || fatherName.isEmpty() || dob.isEmpty() || gender.isEmpty()) {
+        if (name.isEmpty() || surname.isEmpty() || fatherName.isEmpty() || dob.isEmpty() || gender.isEmpty() || aadharStatus.isEmpty()) {
             showToast("Please fill all the fields.")
             return false
         }
@@ -58,7 +63,7 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun saveToPreferences(
         name: String, surname: String, fatherName: String,
-        dob: String, gender: String
+        dob: String, gender: String, languages: String, aadharStatus: String
     ) {
         sharedPreferences.edit {
             putString("Name", name)
@@ -66,9 +71,11 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
             putString("FatherName", fatherName)
             putString("DateOfBirth", dob)
             putString("Gender", gender)
+            putString("Languages", languages)
+            putString("AadharStatus", aadharStatus)
             apply()
         }
-        showToast("Data saved successfully!")
+        showToast(savedData)
     }
 
     private fun navigateToDetails() {
@@ -84,9 +91,23 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
             ""
         }
 
-        if (validateInputs(name, surname, fatherName, dob, gender)) {
-            saveToPreferences(name, surname, fatherName, dob, gender)
-            Toast.makeText(this, "Account Created Successfully", Toast.LENGTH_SHORT).show()
+        val selectedAadharId = binding.rgAadhar.checkedRadioButtonId
+        val aadharStatus = if (selectedAadharId != -1) {
+            findViewById<RadioButton>(selectedAadharId).text.toString()
+        } else {
+            ""
+        }
+
+        // Fetch selected languages
+        val languages = mutableListOf<String>()
+        if (binding.cbTelugu.isChecked) languages.add(telugu)
+        if (binding.cbHindi.isChecked) languages.add(hindi)
+        if (binding.cbEnglish.isChecked) languages.add(english)
+        val languagesKnown = languages.joinToString(", ")
+
+        if (validateInputs(name, surname, fatherName, dob, gender, aadharStatus)) {
+            saveToPreferences(name, surname, fatherName, dob, gender, languagesKnown, aadharStatus)
+            Toast.makeText(this, successfully, Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, CreateFromDetailsActivity::class.java)
             startActivity(intent)
@@ -99,6 +120,8 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
         val fatherName = sharedPreferences.getString("FatherName", "")
         val dob = sharedPreferences.getString("DateOfBirth", "")
         val gender = sharedPreferences.getString("Gender", "")
+        val languages = sharedPreferences.getString("Languages", "")
+        val aadharStatus = sharedPreferences.getString("AadharStatus", "")
 
         binding.etName.setText(name)
         binding.etsurname.setText(surname)
@@ -109,6 +132,16 @@ class CreateAccountFormActivity : AppCompatActivity(), View.OnClickListener {
             "Male" -> binding.rbMale.isChecked = true
             "Female" -> binding.rbFemale.isChecked = true
             "Other" -> binding.rbOther.isChecked = true
+        }
+
+        // Restore selected languages
+        if (languages?.contains(telugu) == true) binding.cbTelugu.isChecked = true
+        if (languages?.contains(hindi) == true) binding.cbHindi.isChecked = true
+        if (languages?.contains(english) == true) binding.cbEnglish.isChecked = true
+
+        when (aadharStatus) {
+            "Yes" -> binding.rbAadharYes.isChecked = true
+            "No" -> binding.rbAadharNo.isChecked = true
         }
     }
 

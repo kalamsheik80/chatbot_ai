@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="16dp"
-                android:text="Male"
+                android:text="@string/male"
                 android:textColor="@color/white" />
 
             <RadioButton
@@ -92,14 +92,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="16dp"
-                android:text="Female"
+                android:text="@string/female"
                 android:textColor="@color/white" />
 
             <RadioButton
                 android:id="@+id/rbOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Other"
+                android:text="@string/other"
                 android:textColor="@color/white" />
         </RadioGroup>
     </LinearLayout>
@@ -113,26 +113,91 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Date of Birth:"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
         <EditText
             android:id="@+id/etDateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/square_corner"
             android:clickable="true"
             android:focusable="false"
             android:hint="@string/date_of_birth"
             android:padding="12dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
+    </LinearLayout>
+    <!--    Languages-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/square_corner"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/languages"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cbTelugu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telugu"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/cbHindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hindi"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/cbEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/English"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <!-- Aadhar ID YES OR NO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/square_corner"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aadhar_card"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/rgAadhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbAadharYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/rbAadharNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:textColor="@color/white" />
+        </RadioGroup>
     </LinearLayout>
 
     <!-- Submit Button -->
