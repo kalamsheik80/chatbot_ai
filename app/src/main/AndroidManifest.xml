@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Dashboard Activity -->
         <activity
             android:name=".dashboard.DashboardActivity"
             android:exported="true" />

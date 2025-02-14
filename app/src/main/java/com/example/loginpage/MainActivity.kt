@@ -11,7 +11,6 @@ import com.example.loginpage.dashboard.DashboardActivity
 import com.example.loginpage.databinding.ActivityMainBinding
 import com.example.loginpage.form.CreateAccountFormActivity
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -19,19 +18,15 @@ class MainActivity : AppCompatActivity() {
     // Mock credentials
     private val correctUsername = "admin"
     private val correctPassword = "pass@123"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-//        val fruitName = "Apple"
-//        println("fruit name : $fruitName")
-//        val user = User("Naga Sai", "L", "25", "9645455445", "nagasai.l@gmail.com")
-//        println("user name: ${user.name}")
 
-        val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
-        // Check if user is already logged in
+        // Ensure correct ID is used for login button
         binding.loginBtn.setOnClickListener {
             val usernameInput = binding.etUserName.text.toString().trim()
             val passwordInput = binding.etPassword.text.toString().trim()
@@ -53,23 +48,20 @@ class MainActivity : AppCompatActivity() {
 
                 usernameInput != correctUsername && passwordInput == correctPassword -> {
                     showToast("Incorrect Username")
-
                 }
 
                 usernameInput == correctUsername && passwordInput != correctPassword -> {
                     showToast("Incorrect Password")
-
                 }
 
                 usernameInput == correctUsername && passwordInput == correctPassword -> {
                     showToast("Login Successful")
-
+                    sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
                     navigateToDashboard()
                 }
 
                 else -> {
                     showToast("Incorrect Username and Password")
-
                 }
             }
         }
@@ -82,10 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openCreateAccount(view: View?) {
-        val intent = Intent(
-            this,
-            CreateAccountFormActivity::class.java
-        )
+        val intent = Intent(this, CreateAccountFormActivity::class.java)
         startActivity(intent)
     }
 

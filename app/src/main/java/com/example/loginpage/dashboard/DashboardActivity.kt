@@ -3,6 +3,7 @@ package com.example.loginpage.dashboard
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.loginpage.MainActivity
@@ -24,6 +25,8 @@ class DashboardActivity : AppCompatActivity() {
         // Check login status
         val sharedPreferences = getSharedPreferences(sharedPrefsName, Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        Log.e("isLoggedIn", "" + isLoggedIn)
 
         if (!isLoggedIn) {
             // Redirect to LoginActivity if not logged in

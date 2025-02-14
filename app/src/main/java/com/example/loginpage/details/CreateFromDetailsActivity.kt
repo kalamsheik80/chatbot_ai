@@ -32,7 +32,7 @@ class CreateFromDetailsActivity : AppCompatActivity() {
         val dob = sharedPreferences.getString("DateOfBirth", "N/A")
         val gender = sharedPreferences.getString("Gender", "N/A")
         val languages = sharedPreferences.getString("Languages", "N/A")
-        val aadharStatus = sharedPreferences.getString("Aadhar", "N/A")
+        val aadharStatus = sharedPreferences.getString("AadharStatus", "N/A")
 
         binding.etName.text = name
         binding.etsurname.text = surname
