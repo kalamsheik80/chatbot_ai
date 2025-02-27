@@ -15,50 +15,56 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <!-- Increased the chatbot image size -->
         <ImageView
-            android:layout_width="162dp"
-            android:layout_height="157dp"
-            android:contentDescription="Login Logo"
-            android:src="@drawable/login_logo" />
+            android:layout_width="180dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/login_logo"
+            android:src="@drawable/chatbot_image" />
 
+        <!-- Username Input Field -->
         <EditText
             android:id="@+id/etUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:background="@drawable/rounded_corner"
-            android:hint="Username"
+            android:layout_marginTop="0dp"
             android:inputType="text"
             android:padding="18dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:hint="@string/name_user"
             android:textSize="20sp" />
 
+        <!-- Password Input Field -->
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:background="@drawable/rounded_corner"
-            android:hint="Password"
+            android:layout_marginTop="17dp"
             android:inputType="textPassword"
             android:padding="18dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:hint="@string/password"
             android:textSize="20sp" />
 
+        <!-- Login Button -->
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:padding="18dp"
-            android:text="LOGIN"
+            android:text="@string/login"
             android:clickable="true"
             android:focusable="true"
             android:textSize="20sp" />
     </LinearLayout>
 
+    <!-- Bottom Links -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Forgot Password?"
+            android:text="@string/forget_password"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -80,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="openCreateAccount"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>

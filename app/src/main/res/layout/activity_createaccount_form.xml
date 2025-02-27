@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/createpage_background"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp"
     tools:context=".form.CreateAccountFormActivity">
 
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/crate_account_title"
+        android:text="@string/create_account_title"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -30,183 +31,52 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
+    <!-- Email Field -->
     <EditText
-        android:id="@+id/etsurname"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/square_corner"
-        android:hint="@string/surname_user"
-        android:inputType="text"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:padding="12dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
-    <!-- Father's Name Field -->
+    <!-- Password Field -->
     <EditText
-        android:id="@+id/etfathername"
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/square_corner"
-        android:hint="@string/father_name"
-        android:inputType="text"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         android:padding="12dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
-    <!-- Gender Selection -->
-    <LinearLayout
+    <!-- Confirm Password Field -->
+    <EditText
+        android:id="@+id/etConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/square_corner"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/gender"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <RadioGroup
-            android:id="@+id/rgGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="16dp"
-                android:text="@string/male"
-                android:textColor="@color/white" />
-
-            <RadioButton
-                android:id="@+id/rbFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="16dp"
-                android:text="@string/female"
-                android:textColor="@color/white" />
-
-            <RadioButton
-                android:id="@+id/rbOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/other"
-                android:textColor="@color/white" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <!-- Date of Birth -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/square_corner"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
-        <EditText
-            android:id="@+id/etDateOfBirth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="@string/date_of_birth"
-            android:padding="12dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-    </LinearLayout>
-    <!--    Languages-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/square_corner"
-        android:orientation="horizontal"
-        android:padding="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/languages"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <CheckBox
-            android:id="@+id/cbTelugu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/telugu"
-            android:textColor="@color/white" />
-
-        <CheckBox
-            android:id="@+id/cbHindi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hindi"
-            android:textColor="@color/white" />
-
-        <CheckBox
-            android:id="@+id/cbEnglish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/English"
-            android:textColor="@color/white" />
-    </LinearLayout>
-
-    <!-- Aadhar ID YES OR NO -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/square_corner"
-        android:orientation="vertical"
-        android:padding="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/aadhar_card"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <RadioGroup
-            android:id="@+id/rgAadhar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbAadharYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:textColor="@color/white" />
-
-            <RadioButton
-                android:id="@+id/rbAadharNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:textColor="@color/white" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <!-- Submit Button -->
+    <!-- Create Account Button -->
     <Button
-        android:id="@+id/btnVerify"
-        android:layout_width="match_parent"
+        android:id="@+id/btnCreateAccount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:padding="12dp"
-        android:text="@string/create_account"
+        android:text="@string/create_account_btn"
         android:textSize="18sp" />
 </LinearLayout>

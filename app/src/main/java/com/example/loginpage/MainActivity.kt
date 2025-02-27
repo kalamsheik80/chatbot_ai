@@ -1,84 +1,85 @@
 package com.example.loginpage
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.loginpage.dashboard.DashboardActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.loginpage.dashboard.ChatbotActivity
+import com.example.loginpage.database.AppDatabase
 import com.example.loginpage.databinding.ActivityMainBinding
 import com.example.loginpage.form.CreateAccountFormActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-
-    // Mock credentials
-    private val correctUsername = "admin"
-    private val correctPassword = "pass@123"
+    private lateinit var database: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        // Initialize Room Database
+        database = AppDatabase.getDatabase(this)
 
-        // Ensure correct ID is used for login button
         binding.loginBtn.setOnClickListener {
-            val usernameInput = binding.etUserName.text.toString().trim()
-            val passwordInput = binding.etPassword.text.toString().trim()
+            val email = binding.etUserName.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
 
-            Log.e("Login Details", "Username: $usernameInput - Password: $passwordInput")
+            if (email.isEmpty()) {
+                showToast("Please enter email")
+                return@setOnClickListener
+            }
+            if (password.isEmpty()) {
+                showToast("Please enter password")
+                return@setOnClickListener
+            }
 
-            when {
-                usernameInput.isEmpty() && passwordInput.isEmpty() -> {
-                    showToast("Error: Username and Password cannot be empty")
+            loginUser(email, password)
+        }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val userDao = database.userDao()
+                val user = userDao.getUser(email, password)
+
+                withContext(Dispatchers.Main) {
+                    if (user != null) {
+                        showToast("Login Successful")
+                        navigateToDashboard()
+                    } else {
+                        showToast("Invalid Email or Password")
+                    }
                 }
-
-                usernameInput.isEmpty() -> {
-                    showToast("Error: Username cannot be empty")
-                }
-
-                passwordInput.isEmpty() -> {
-                    showToast("Error: Password cannot be empty")
-                }
-
-                usernameInput != correctUsername && passwordInput == correctPassword -> {
-                    showToast("Incorrect Username")
-                }
-
-                usernameInput == correctUsername && passwordInput != correctPassword -> {
-                    showToast("Incorrect Password")
-                }
-
-                usernameInput == correctUsername && passwordInput == correctPassword -> {
-                    showToast("Login Successful")
-                    sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
-                    navigateToDashboard()
-                }
-
-                else -> {
-                    showToast("Incorrect Username and Password")
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    showToast("An error occurred: ${e.message}")
                 }
             }
         }
     }
 
     private fun navigateToDashboard() {
-        val intent = Intent(this, DashboardActivity::class.java)
+        val intent = Intent(this, ChatbotActivity::class.java)
         startActivity(intent)
-        finish() // Close login activity so user can't go back
+        finish()
     }
 
-    fun openCreateAccount(view: View?) {
+
+    fun openCreateAccount(view: View) {
         val intent = Intent(this, CreateAccountFormActivity::class.java)
         startActivity(intent)
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
     }
 }

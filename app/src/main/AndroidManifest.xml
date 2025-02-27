@@ -12,27 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginPage"
         tools:targetApi="31">
-
         <!-- MainActivity for login -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".dashboard.DashboardActivity"
-            android:exported="true" />
-        <activity
-            android:name=".details.CreateFromDetailsActivity"
+            android:name=".dashboard.ChatbotActivity"
             android:exported="true" />
         <activity
             android:name=".form.CreateAccountFormActivity"
             android:exported="true" />
-
     </application>
-
 </manifest>

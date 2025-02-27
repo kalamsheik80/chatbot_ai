@@ -1,34 +1,22 @@
 package com.example.loginpage.utils
 
+import android.util.Patterns
+
 object ValidationUtils {
 
     fun validateName(name: String): Boolean {
-        var res = true
-        if (name.isEmpty()) {
-            res = false
-        } else if (name.length !in 3..24) {
-            res = false
-        }
-        return res
+        return name.isNotEmpty() && name.length in 3..24
     }
 
-    fun validateSurname(surname: String): Boolean {
-        var res = true
-        if (surname.isEmpty()) {
-            res = false
-        } else if (surname.length !in 3..24) {
-            res = false
-        }
-        return res
+    fun validateEmail(email: String): Boolean {
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    fun validateFatherName(fatherName: String): Boolean {
-        var res = true
-        if (fatherName.isEmpty()) {
-            res = false
-        } else if (fatherName.length !in 3..24) {
-            res = false
-        }
-        return res
+    fun validatePassword(password: String): Boolean {
+        return password.isNotEmpty() && password.length >= 6
+    }
+
+    fun validateConfirmPassword(password: String, confirmPassword: String): Boolean {
+        return confirmPassword.isNotEmpty() && password == confirmPassword
     }
 }

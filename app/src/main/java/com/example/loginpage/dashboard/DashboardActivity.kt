@@ -1,50 +1,36 @@
 package com.example.loginpage.dashboard
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.loginpage.MainActivity
 import com.example.loginpage.databinding.DashboardactivityBinding
 
-class DashboardActivity : AppCompatActivity() {
+class ChatbotActivity : AppCompatActivity() {
 
     private lateinit var binding: DashboardactivityBinding
-    private val sharedPrefsName = "user_prefs"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Initialize view binding
-
         binding = DashboardactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Check login status
-        val sharedPreferences = getSharedPreferences(sharedPrefsName, Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
-
-        Log.e("isLoggedIn", "" + isLoggedIn)
-
-        if (!isLoggedIn) {
-            // Redirect to LoginActivity if not logged in
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        // Set onClickListener for Send button
+        binding.btnSend.setOnClickListener {
+            val userMessage = binding.etUserInput.text.toString().trim()
+            if (userMessage.isNotEmpty()) {
+                sendMessage(userMessage)
+                binding.etUserInput.text.clear()
+            } else {
+                showToast("Please enter a message")
+            }
         }
+    }
 
-        // Set onClickListener for View Profile button
-        binding.btnProfile.setOnClickListener {
-            showToast("View Profile clicked")
-        }
-
-        // Set onClickListener for Settings button
-        binding.btnSettings.setOnClickListener {
-            showToast("Settings clicked")
-        }
-
-
+    private fun sendMessage(message: String) {
+        // TODO: Implement chatbot logic
+        showToast("Sent: $message")
     }
 
     private fun showToast(message: String) {

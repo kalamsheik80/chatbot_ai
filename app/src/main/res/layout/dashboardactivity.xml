@@ -2,39 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dashboard_background"
-    android:gravity="center"
     android:orientation="vertical"
-
+    android:background="@drawable/dashboard_background"
     android:padding="16dp">
 
-
-    <!-- Dashboard Title -->
+    <!-- Chatbot Title -->
     <TextView
-        android:id="@+id/tvDashboardTitle"
+        android:id="@+id/tvChatbotTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Welcome to Dashboard!"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:text="@string/chat_bot_ai"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <!-- Sample Dashboard Button 1 -->
-    <Button
-        android:id="@+id/btnProfile"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Messages will appear here -->
+    </LinearLayout>
+
+    <!-- User Input Section -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="View Profile" />
+        android:layout_gravity="bottom"
+        android:background="@drawable/dashboard_background"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <!-- Sample Dashboard Button 2 -->
-    <Button
-        android:id="@+id/btnSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Settings" />
+        <EditText
+            android:id="@+id/etUserInput"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/square_corner"
+            android:hint="@string/type_a_message"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:textColorHint="@android:color/white"
+            android:textSize="16sp" />
 
-    <!-- Sample Logout Button -->
-
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:padding="12dp"
+            android:text="@string/send"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 </LinearLayout>

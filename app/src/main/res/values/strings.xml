@@ -1,22 +1,16 @@
 <resources>
-    <string name="app_name">Application</string>
-    <string name="crate_account_title">Create Account</string>
-    <string name="name_user">Name : </string>
-    <string name="surname_user">Surname : </string>"
-    <string name="father_name">Father Name : </string>">
-    <string name="gender">Gender: </string>
-    <string name="date_of_birth">Date of Birth: </string>
-    <string name="languages">Languages: </string>
-    <string name="have_aid">Is aadhar id available: </string>
-    <string name="create_account">Create Account</string>
-    <string name="telugu">Telugu</string>
-    <string name="hindi">Hindi</string>
-    <string name="English">English</string>
-    <string name="aadhar_card">Do you have aadhar Card</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="other">Other</string>
-
+    <string name="app_name">Kaldia AI</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="name_user">User Name: </string>
+    <string name="email">E-Mail: </string>
+    <string name="password">Password: </string>
+    <string name="confirm_password">Confirm Password: </string>
+    <string name="create_account_btn">Create Account</string>
+    <string name="chat_bot_ai">KALDIA AI</string>
+    <string name="type_a_message">Message</string>
+    <string name="send">Send</string>
+    <string name="login_logo">Login Logo</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forgot Password?</string>
+    <string name="create_account">Create Account</string>"
 </resources>
