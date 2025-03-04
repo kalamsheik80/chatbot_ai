@@ -10,6 +10,7 @@ import com.example.loginpage.dashboard.ChatbotActivity
 import com.example.loginpage.database.AppDatabase
 import com.example.loginpage.databinding.ActivityMainBinding
 import com.example.loginpage.form.CreateAccountFormActivity
+import com.example.loginpage.form.ForgetPasswordActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -70,7 +71,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
+    fun openForgetPassword(view: View) {
+        val intent = Intent(this, ForgetPasswordActivity::class.java)
+        startActivity(intent)
+    }
 
     fun openCreateAccount(view: View) {
         val intent = Intent(this, CreateAccountFormActivity::class.java)
